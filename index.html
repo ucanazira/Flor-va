@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bloomery (Floréva)</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <!-- Hubungkan ke file CSS -->
+    <link rel="stylesheet" href="style.css" />
+    <!-- Import Font Google (Poppins) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <!-- Navbar -->
+    <header>
+      <div class="logo">Floréva</div>
+      <nav class="nav-links">
+        <a href="#">Home</a><a href="#">Catalog</a><a href="#">Biography</a
+        ><a href="#">Reviews</a>
+      </nav>
+      
+      <!-- Tombol Kanan (Cart & Profil) -->
+      <div class="header-actions">
+        <!-- Tombol Cart -->
+        <button class="icon-btn cart-btn" id="cartBtn" title="Cart">
+          <i class="fa-solid fa-bag-shopping"></i>
+        </button>
+
+        <!-- Tombol Profil & Dropdown -->
+        <div class="profile-container">
+          <button class="icon-btn profile-btn" id="profileBtn" title="Account">
+            <i class="fa-regular fa-user"></i>
+          </button>
+          
+          <div class="profile-dropdown" id="profileDropdown">
+            <a href="#" class="dropdown-item">Login</a>
+            <a href="#" class="dropdown-item">Register</a>
+            <hr>
+            <a href="#" class="dropdown-item">My Orders</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Modal Notifikasi Login (Jika Cart diklik tanpa Login) -->
+    <div class="modal-overlay" id="loginModal">
+      <div class="modal-box">
+        <h3>Wait a moment!</h3>
+        <p>You need to login first to see your cart.</p>
+        <div class="modal-actions">
+          <button class="btn-cancel" onclick="closeModal()">Cancel</button>
+          <button class="btn-login" onclick="closeModal()">Login Now</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hero Section (DESAIN BARU & SLIDER 4 GAMBAR) -->
+    <section class="hero">
+      
+      <!-- Konten Teks (Kiri) -->
+      <div class="hero-text">
+        <h1>Masterclass bouquets,<br />where every detail <span>matters</span></h1>
+        <p>
+          We create bouquets that convey what is difficult to express in words. 
+          Tenderness, care, sincere sympathy or a vivid moment - they accurately 
+          convey the mood of the moment.
+        </p>
+        <a href="#" class="learn-btn">
+          <span class="text">View new collection</span>
+          <span class="circle">
+            <i class="fa-solid fa-arrow-right"></i>
+          </span>
+        </a>
+        
+        <!-- Teks transparan di bawah kiri -->
+        <div class="hero-bottom-text">
+          New inspiring<br>collection 2025
+        </div>
+      </div>
+
+      <!-- Area Gambar & UI (Kanan) -->
+      <div class="hero-visual">
+        <!-- Background ungu melengkung -->
+        <div class="hero-bg-shape"></div>
+
+        <!-- WADAH SLIDER GAMBAR (4 Gambar) -->
+        <div class="hero-image-slider">
+          <img src="img/calla-lily.png" alt="Calla Lily" class="hero-slide-img active" />
+          <img src="img/iris.png" alt="Iris" class="hero-slide-img" />
+          <img src="img/white-rose.png" alt="White Rose" class="hero-slide-img" />
+          <img src="img/daffodil.png" alt="Daffodil" class="hero-slide-img" />
+        </div>
+
+        <!-- Indikator Angka (Tengah) -->
+        <div class="hero-indicators">
+          <span class="active" onclick="changeHeroSlide(0)">1</span>
+          <span onclick="changeHeroSlide(1)">2</span>
+          <span onclick="changeHeroSlide(2)">3</span>
+          <span onclick="changeHeroSlide(3)">4</span>
+        </div>
+
+        <!-- Kartu Melayang (Bawah) -->
+        <div class="hero-floating-card">
+          <div class="card-thumb">
+            <img src="img/white-rose.png" alt="Thumbnail" />
+          </div>
+          <div class="card-content">
+            <h4>Large selection of bouquets</h4>
+            <p>Find the perfect one for this occasion - a bouquet that will fill the moment with emotions you want to keep.</p>
+          </div>
+          <button class="card-arrow">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </button>
+        </div>
+      </div>
+      
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery">
+      <div class="gallery-header">
+        <h2 class="gallery-title">Gallery Floréva</h2>
+        <div class="gallery-buttons">
+          <button class="filter active">New Flower</button>
+          <button class="filter">Special Occasion</button>
+          <button class="filter">Anniversary</button>
+          <button class="filter">Sympathy</button>
+        </div>
+      </div>
+
+      <div class="gallery-grid">
+        <div class="card">
+          <div class="card-img" style="background: #e6e1f9">
+            <img src="img/cosmos.png" alt="Flower 1" />
+          </div>
+          <div class="card-info">
+            <h3>Morning Light</h3>
+            <p>$25.00</p>
+            <button class="buy-btn">Buy Now</button>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-img" style="background: #f0f0f0">
+            <img src="img/white-rose.png" alt="Flower 2" />
+          </div>
+          <div class="card-info">
+            <h3>White Charm</h3>
+            <p>$30.00</p>
+            <button class="buy-btn">Buy Now</button>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-img" style="background: #e1eaf9">
+            <img src="img/daffodil.png" alt="Flower 3" />
+          </div>
+          <div class="card-info">
+            <h3>Blue Morning</h3>
+            <p>$28.00</p>
+            <button class="buy-btn">Buy Now</button>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-img" style="background: #f9e1e8">
+            <img src="img/samur.png" alt="Flower 4" />
+          </div>
+          <div class="card-info">
+            <h3>Cold Breeze</h3>
+            <p>$22.00</p>
+            <button class="buy-btn">Buy Now</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section (DENGAN ANIMASI MARQUEE) -->
+    <section class="about">
+      <!-- Background atas -->
+      <div class="about-bg top">
+        <div class="marquee-track">
+          <span>Floréva</span><span>Floréva</span><span>Floréva</span><span>Floréva</span><span>Floréva</span><span>Floréva</span><span>Floréva</span><span>Floréva</span>
+          <!-- Duplikasi teks agar animasi tidak putus -->
+          <span>Floréva</span><span>Floréva</span><span>Floréva</span><span>Floréva</span><span>Floréva</span><span>Floréva</span><span>Floréva</span><span>Floréva</span>
+        </div>
+      </div>
+
+      <!-- Card -->
+      <div class="about-card">
+        <p>
+          At Bloomery, we collect 💐 not just flowers, but moods. The lightness
+          of the morning 🌸 , the warmth of the meeting 🌿, the thrill of
+          recognition 💜 - each composition has its own character.
+        </p>
+      </div>
+
+      <!-- Background bawah -->
+      <div class="about-bg bottom">
+        <div class="marquee-track">
+          <span>Floréva</span><span>Floréva</span><span>Floréva</span><span>Floréva</span><span>Floréva</span><span>Floréva</span><span>Floréva</span><span>Floréva</span>
+          <!-- Duplikasi teks agar animasi tidak putus -->
+          <span>Floréva</span><span>Floréva</span><span>Floréva</span><span>Floréva</span><span>Floréva</span><span>Floréva</span><span>Floréva</span><span>Floréva</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- WHY CHOOSE SECTION (DESAIN BARU)           -->
+    <!-- ========================================== -->
+    <section class="why-choose">
+      <div class="why-container">
+        
+        <!-- Header (Judul & Tombol Kanan) -->
+        <div class="why-header">
+          <h2>Why choose our<br>bouquets?</h2>
+          <button class="btn-outline">Become our client</button>
+        </div>
+
+        <!-- Area Diagram -->
+        <div class="why-diagram">
+          
+          <!-- Garis Lingkaran Tipis -->
+          <div class="circle-line line-outer"></div>
+          <div class="circle-line line-inner"></div>
+
+          <!-- Gambar Bunga & Background (Sudah digabung jadi 1 PNG) -->
+          <div class="why-flower-wrapper">
+            <!-- GANTI 'belum mekar.png' DENGAN NAMA FILE PNG GABUNGAN ANDA -->
+            <img src="img/belum mekar.png" alt="Flower with Oval Background" class="why-main-flower" />
+          </div>
+
+          <!-- Teks Kiri -->
+          <div class="why-text text-left-1">
+            <h3>Author's style</h3>
+            <p>Each bouquet is created as a work of art, with soul and inspiration.</p>
+          </div>
+          <div class="why-text text-left-2">
+            <h3>Fresh flowers</h3>
+            <p>We deliver only the freshest flowers that will delight you for a long time.</p>
+          </div>
+          <div class="why-text text-left-3">
+            <h3>Aesthetics in everything</h3>
+            <p>We carefully pack every bud so that even the packaging brings joy.</p>
+          </div>
+
+          <!-- Teks Kanan -->
+          <div class="why-text text-right-1">
+            <h3>For any occasion</h3>
+            <p>We will collect a bouquet for a holiday, a date, or just to give attention.</p>
+          </div>
+          <div class="why-text text-right-2">
+            <h3>Bouquet with character</h3>
+            <p>Each composition is a unique story and a true mood.</p>
+          </div>
+          <div class="why-text text-right-3">
+            <h3>Mood in the bouquet</h3>
+            <p>The combination of color and texture creates the perfect mood.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- EXTRAS SECTION (E-COMMERCE STYLE)          -->
+    <!-- ========================================== -->
+    <section class="extras">
+      <div class="container">
+        <div class="extras-header">
+          <h2>Make it Extra Special</h2>
+          <p>Add a personal touch to your bouquet.</p>
+        </div>
+        
+        <div class="extras-table">
+          <!-- Item 1 -->
+          <div class="extras-row">
+            <div class="col-title">Personal card</div>
+            <div class="col-desc">We will add a heartfelt letter to your bouquet for a special accent.</div>
+            <div class="col-price">Rp 25.000</div>
+            <button class="extras-btn" data-price="25000" data-name="Personal card">
+              <i class="fa-solid fa-plus"></i>
+            </button>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="extras-row">
+            <div class="col-title">Urgent delivery</div>
+            <div class="col-desc">We will deliver the bouquet within 2 hours around the city after placing the order.</div>
+            <div class="col-price">Rp 50.000</div>
+            <button class="extras-btn" data-price="50000" data-name="Urgent delivery">
+              <i class="fa-solid fa-plus"></i>
+            </button>
+          </div>
+
+          <!-- Item 3 -->
+          <div class="extras-row">
+            <div class="col-title">Individual packaging</div>
+            <div class="col-desc">Special paper or fabric of your choice for expressive feed.</div>
+            <div class="col-price">Rp 45.000</div>
+            <button class="extras-btn" data-price="45000" data-name="Individual packaging">
+              <i class="fa-solid fa-plus"></i>
+            </button>
+          </div>
+
+          <!-- Item 4 -->
+          <div class="extras-row">
+            <div class="col-title">Sweet treats</div>
+            <div class="col-desc">Chocolate, candles, small gifts to enhance the impression.</div>
+            <div class="col-price">Rp 55.000</div>
+            <button class="extras-btn" data-price="55000" data-name="Sweet treats">
+              <i class="fa-solid fa-plus"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Total & Tombol Checkout -->
+        <div class="extras-footer">
+          <div class="extras-total">
+            <span>Total Add-ons:</span>
+            <strong id="total-price">Rp 0</strong>
+          </div>
+          <button class="checkout-btn">Add to Cart</button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- NEW SECTION 1: Purple Highlight            -->
+    <!-- ========================================== -->
+    <section class="purple-highlight">
+      <div class="highlight-wrapper">
+        <!-- Gambar Bunga yang menembus kotak -->
+        <img src="img/calla-lily-miring.png" alt="Flower Highlight" class="overlap-flower" />
+        
+        <!-- Kartu-kartu teks -->
+        <div class="highlight-card card-1">
+          <h4>Author's style</h4>
+          <p>Each bouquet is created as a work of art.</p>
+        </div>
+        <div class="highlight-card card-2">
+          <h4>For any occasion</h4>
+          <p>We will collect a bouquet of any complexity.</p>
+        </div>
+        <div class="highlight-card card-3">
+          <h4>Fresh flowers</h4>
+          <p>We work only with trusted suppliers.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- NEW SECTION 2: Testimonials / Reviews      -->
+    <!-- ========================================== -->
+    <section class="testimonials">
+      <div class="testi-container">
+        
+        <!-- Kiri: Teks & Card Ulasan -->
+        <div class="testi-left">
+          <h2>More than 500 orders<br>made beautifully with <span>Bloomery</span></h2>
+          
+          <div class="review-card">
+            <div class="review-header">
+              <div class="avatar">
+                <img src="https://i.pravatar.cc/100?img=5" alt="Reviewer">
+              </div>
+              <div class="review-info">
+                <h4>Anna Smirnova</h4>
+                <p>Moscow</p>
+              </div>
+            </div>
+            <p class="review-text">
+              "The bouquet exceeded all expectations! The flowers are incredibly fresh, and the design is simply magical. Thank you for the emotions!"
+            </p>
+            <div class="review-nav">
+              <button class="nav-btn prev">&larr;</button>
+              <button class="nav-btn next">&rarr;</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Kanan: Orbital Photos (Lingkaran) -->
+        <div class="testi-right">
+          <div class="orbit-container">
+            <!-- Garis Lingkaran -->
+            <div class="orbit-circle"></div>
+            
+            <!-- Foto-foto yang melingkar -->
+            <div class="orbit-user user-1"><img src="https://i.pravatar.cc/100?img=1" alt="User"></div>
+            <div class="orbit-user user-2"><img src="https://i.pravatar.cc/100?img=2" alt="User"></div>
+            <div class="orbit-user user-3"><img src="https://i.pravatar.cc/100?img=3" alt="User"></div>
+            <div class="orbit-user user-4"><img src="https://i.pravatar.cc/100?img=4" alt="User"></div>
+            <div class="orbit-user user-5"><img src="https://i.pravatar.cc/100?img=9" alt="User"></div>
+            
+            <!-- Label kecil -->
+            <div class="orbit-label label-1">Beautiful!</div>
+            <div class="orbit-label label-2">Fast delivery</div>
+            <div class="orbit-label label-3">Thanks!</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- FOOTER                                     -->
+    <!-- ========================================== -->
+    <footer class="footer">
+      <div class="footer-bg">
+      </div>
+      <div class="footer-content">
+        <div class="footer-links">
+          <a href="#">Products</a>
+          <a href="#">Services</a>
+          <a href="#">Delivery</a>
+        </div>
+        <h1 class="footer-brand">Floréva</h1>
+        <div class="footer-links">
+          <a href="#">Contacts</a>
+          <a href="#">About Us</a>
+          <a href="#">Help</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- SCRIPT UNTUK SLIDER HERO, EXTRAS, & NAVBAR -->
+    <script>
+      // --- 1. SCRIPT SLIDER HERO ---
+      let currentHeroIndex = 0;
+      const heroImages = document.querySelectorAll('.hero-slide-img');
+      const heroIndicators = document.querySelectorAll('.hero-indicators span');
+
+      function changeHeroSlide(index) {
+        heroImages.forEach(img => img.classList.remove('active'));
+        heroIndicators.forEach(ind => ind.classList.remove('active'));
+
+        if(heroImages[index]) heroImages[index].classList.add('active');
+        if(heroIndicators[index]) heroIndicators[index].classList.add('active');
+        
+        currentHeroIndex = index;
+      }
+
+      setInterval(() => {
+        currentHeroIndex = (currentHeroIndex + 1) % heroImages.length;
+        changeHeroSlide(currentHeroIndex);
+      }, 4000);
+
+      // --- 2. SCRIPT LAYANAN TAMBAHAN (EXTRAS) ---
+      const extrasBtns = document.querySelectorAll('.extras-btn');
+      const totalPriceElement = document.getElementById('total-price');
+      let total = 0;
+
+      extrasBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+          const price = parseInt(this.getAttribute('data-price'));
+          const icon = this.querySelector('i');
+
+          if (!this.classList.contains('active')) {
+            this.classList.add('active');
+            icon.classList.remove('fa-plus');
+            icon.classList.add('fa-check');
+            total += price;
+          } else {
+            this.classList.remove('active');
+            icon.classList.remove('fa-check');
+            icon.classList.add('fa-plus');
+            total -= price;
+          }
+
+          const formattedTotal = new Intl.NumberFormat('id-ID', {
+            style: 'currency',
+            currency: 'IDR',
+            minimumFractionDigits: 0
+          }).format(total);
+
+          totalPriceElement.textContent = formattedTotal;
+        });
+      });
+
+      // --- 3. SCRIPT NAVBAR (DROPDOWN & MODAL) ---
+      const profileBtn = document.getElementById('profileBtn');
+      const profileDropdown = document.getElementById('profileDropdown');
+      const cartBtn = document.getElementById('cartBtn');
+      const loginModal = document.getElementById('loginModal');
+
+      // Simulasi Status Login (Ubah ke true jika ingin mencoba fitur Cart)
+      let isLoggedIn = false; 
+
+      // Buka/Tutup Dropdown
+      profileBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        profileDropdown.classList.toggle('show');
+      });
+
+      // Tutup dropdown jika klik di luar
+      document.addEventListener('click', (e) => {
+        if (!profileDropdown.contains(e.target) && e.target !== profileBtn) {
+          profileDropdown.classList.remove('show');
+        }
+      });
+
+      // Cek Login saat Cart Diklik
+      cartBtn.addEventListener('click', () => {
+        if (!isLoggedIn) {
+          loginModal.classList.add('show');
+        } else {
+          alert("Membuka halaman Cart...");
+        }
+      });
+
+      // Tutup Modal
+      function closeModal() {
+        loginModal.classList.remove('show');
+      }
+
+      loginModal.addEventListener('click', (e) => {
+        if (e.target === loginModal) {
+          closeModal();
+        }
+      });
+    </script>
+  </body>
+</html>
